@@ -6,6 +6,10 @@ import { useParams } from 'react-router-dom';
 import "./Load-file/Loader.css";
 import Loader from './Load-file/Loader';
 import { useHistory } from 'react-router-dom';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button  from '@material-ui/core/Button';
 
 const ProductDetails =()=> {
     const [loader, setLoader] = useState(true);
@@ -50,8 +54,20 @@ const editProduct = (id)=>{
                 <p>Description:{ProductDetails.description}</p>
                 <p>Category:{ProductDetails.category}</p>
                 <p>Price:{ProductDetails.price}</p>
-                <button onClick={() => editProduct(id)}>Edit Details</button>
-                <button onClick={()=>deleteProduct(ProductDetails.id)}>Delete Product</button>
+                <ButtonGroup>
+                <Button
+                    startIcon={<EditIcon />}
+                     variant="contained"
+                     color="primary"
+                     onClick={() => editProduct(id)}> Edit
+                 </Button>
+                <Button
+                      startIcon={<DeleteIcon />}
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => deleteProduct()} > Delete
+                </Button>
+                </ButtonGroup>
         </>
         }
      </Grid>

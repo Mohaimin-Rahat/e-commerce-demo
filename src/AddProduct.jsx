@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import "./Load-file/Loader.css";
 import Loader from './Load-file/Loader';
+import Button  from '@material-ui/core/Button';
 
 const AddProduct=() =>{
     const [loader, setLoader] = useState(true);
@@ -30,7 +31,7 @@ const AddProduct=() =>{
             category:product.category,
             image:product.image,
               }).then((response)=>{
-                 history.push('/')
+                history.push("/");
                }).catch(error=>{
                 console.log(error);
             })
@@ -73,7 +74,14 @@ const AddProduct=() =>{
                <p>Product Image</p>
                <input value={product.image} onChange={e=>addProduct(e,'image')}/>
            </div>
-            <button onClick={productAdded}>Add Product</button>
+           <Grid>
+           <Button 
+                        variant="contained"
+                        color="primary"
+                        onClick ={ () => productAdded ()} > Add Product
+             </Button>
+           </Grid>
+           
           </Grid>
         </Grid>
     </Grid>

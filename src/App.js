@@ -1,43 +1,42 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ProductList from './ProductList';
 import ProductDetails from './ProductDetails';
 import Error from './Error'
 import AddProduct from './AddProduct';
-import { Switch,Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import EditProduct from './EditProduct';
+import Navbar from './NavBar/NavBar';
 
 const App = () => {
-  const [userList,setuserList]=useState([]);
+  const [userList] = useState([]);
 
-
-return(
-  <Grid container justifyContent={'center'}>
-    <Grid item md={12}>
-        <Link to='/'>Home</Link>
-        <Link to='/create-product'>Create Product</Link>
-    </Grid>
-     <Grid item md={12}>
+  return (
+    <Grid container justifyContent={'center'}>
+      <Grid item md={12}>
+        <Router>
+          <Navbar/>
         <Switch>
           <Route exact path='/'>
-            <ProductList userList={userList}/>
+            <ProductList userList={userList} />
           </Route>
           <Route exact path='/ProductDetails/:id'>
-            <ProductDetails/>
+            <ProductDetails />
           </Route>
           <Route exact path='/create-product/'>
-            <AddProduct/>
+            <AddProduct />
           </Route>
           <Route exact path='/EditProduct/:id'>
-            <EditProduct/>
+            <EditProduct />
           </Route>
 
-      <Route exact path='*'>
-         <Error/>
-      </Route>
-    </Switch>
+          <Route exact path='*'>
+            <Error />
+          </Route>
+        </Switch>
+        </Router>
+      </Grid>
     </Grid>
-  </Grid>
- );
+  );
 };
 export default App;

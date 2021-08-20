@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { useHistory } from 'react-router-dom';
 import "./Load-file/Loader.css";
 import Loader from './Load-file/Loader';
+import Button  from '@material-ui/core/Button';
 
 
 
@@ -38,10 +39,15 @@ const ProductList =()=> {
             </Grid>
             {
                 productList.map((product,index) => (
-                    <Grid key={index} item md ={3}>
-                        <img src={product.image} style={{width:'100%'}} alt={'kjfks'}/>
+                    <Grid key={index} md={4}>
+                        <img src={product.image} style={{width:'75%'}} alt={'kjfks'}/>
                         <p> {product.title}</p>
-                        <button onClick={()=> seeDetails(product.id)}>See Details </button>
+                    <Grid>
+                        <Button 
+                        variant="contained"
+                        color="primary"
+                        onClick={()=> seeDetails(product.id)}>See Details </Button>
+                    </Grid>
                         </Grid>
                 ))
         

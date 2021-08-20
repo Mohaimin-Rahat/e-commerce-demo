@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import "./Load-file/Loader.css";
 import Loader from './Load-file/Loader';
+import Button  from '@material-ui/core/Button';
+import UpdateIcon from '@material-ui/icons/Update';
 
 const EditProduct=()=>{
     const [loader, setLoader] = useState(true);
@@ -54,7 +56,7 @@ const EditProduct=()=>{
              <Grid container spacing={3} justifyContent='center'>
                 <Grid container item md={7}>
                   <Grid item md={12}>
-                    <p>ProductList</p>
+                    
                 </Grid>
                 <Grid item md={12}>
                
@@ -78,7 +80,12 @@ const EditProduct=()=>{
                     <p>Product Image</p>
                     <input value={newDetails.image} onChange={e=>editProduct(e,'image')}/>
                 </div>
-                    <button onClick={requestUpdate}>Update Details</button>
+                <Button
+                    startIcon={<UpdateIcon />}
+                     variant="contained"
+                     color="primary"
+                     onClick={() => requestUpdate(id)}> Update Details
+                </Button>
         </Grid>
         </Grid>
     </Grid>
